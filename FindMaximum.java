@@ -1,10 +1,12 @@
 package com.bridgelabz;
 
+import java.util.Scanner;
+
 public class FindMaximum {
 	
-	public static Integer findMax(Integer firstNumber, Integer secondNumber, Integer thirdNumber) {
+	public <T extends Comparable> T findMax(T firstNumber, T secondNumber, T thirdNumber) {
 		
-		Integer max = firstNumber;
+		T max = firstNumber;
 		
 		if (secondNumber.compareTo(max) > 0) {
 			max = secondNumber;
@@ -15,48 +17,53 @@ public class FindMaximum {
 		}
 		return max;
 	}
-
-	public static float findMax(Float firstNumber, Float secondNumber, Float thirdNumber) {
-		
-		float max = firstNumber;
 	
-		if (secondNumber.compareTo(max) > 0) {
-			max = secondNumber;
+	Scanner sc = new Scanner(System.in);
+	
+	public void maximum(int n) {
+		
+		if (n == 1) {
+			System.out.println("Enter three numbers");
+			int num1 = sc.nextInt();
+			int num2 = sc.nextInt();
+			int num3 = sc.nextInt();
+			System.out.println("The maximum number is: " + findMax(num1, num2, num3));			
+		}
+		else if (n == 2) {
+			System.out.println("Enter three numbers");
+			float num1 = sc.nextFloat();
+			float num2 = sc.nextFloat();
+			float num3 = sc.nextFloat();
+			System.out.println("The maximum number is: " + findMax(num1, num2, num3));
+		}
+		else if (n == 3) {
+			System.out.println("Enter three string");
+			String num1 = sc.next();
+			String num2 = sc.next();
+			String num3 = sc.next();
+			System.out.println("The maximum string is: " + findMax(num1, num2, num3));			
 		}
 		
-		if (thirdNumber.compareTo(max) > 0) {
-			max = thirdNumber;
-		}
-		return max;
 	}
-		
-	public static String findMax(String firstNumber, String secondNumber, String thirdNumber) {
-		
-		String max = firstNumber;
-		
-		if (secondNumber.compareTo(max) > 0) {
-			max = secondNumber;
-		}
-		
-		if (thirdNumber.compareTo(max) > 0) {
-			max = thirdNumber;
-		}
-		return max;
-	} 
 	
 	public static void main(String[] args) {
 		
-		int a;
-		float b;
-		String c;
+		FindMaximum fm = new FindMaximum();
 		
-		a = findMax(12, 45, 32); 
-		System.out.println("Maximum number is: " + a);
-		
-		b = findMax(10.2F, 5.6F, 8.4F);	
-		System.out.println("Maximum number is: " + b);
-		
-		c = findMax("Dipti", "Sneha", "Niha");
-		System.out.println("Maximum number is: " + c);
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			System.out.println("Enter number:");
+			System.out.println("1. Integer");
+			System.out.println("2. Float");
+			System.out.println("3. String");
+			System.out.println("4. Stop");
+			int n = sc.nextInt();
+			
+			if (n == 1 || n == 2 || n == 3) {
+				fm.maximum(n);
+			}else {
+				break;
+			}
+		}
 	}
 }
